@@ -1,51 +1,44 @@
-# Proposta Técnica: Totem Interativo FlexMedia
+# Proposta Técnica: Totem Inteligente FlexMedia
   https://docs.google.com/document/d/1DhDPqPwXxP_s5cN4GDjyzxuer0-A6LmppBoKmOaHSs8/edit?tab=t.0#heading=h.7adthb9gk6zu
-## Visão Geral  
-Este documento apresenta a proposta técnica para o desenvolvimento do **Totem Interativo FlexMedia** — uma solução voltada para exibição interativa de conteúdos digitais em espaços públicos ou corporativos, com foco em usabilidade, performance e manutenção.
 
-## Objetivos  
-- Definir os requisitos funcionais e não‑funcionais da solução.  
-- Especificar a arquitetura técnica, componentes de hardware e software.  
-- Apresentar cronograma, custos estimados e plano de implantação.  
-- Fornecer diretrizes de manutenção, segurança e escalabilidade.
+### Integrantes
+- Filipe Marques Previato - RM567720
+- Victor Araujo Ferreira - RM567619
+- Pedro Zanon Castro - RM567350
+- Jonathan Gomes Ribeiro Franco - RM567109
 
-## Público‑Alvo  
-Destinado a stakeholders envolvidos na aprovação, implementação e manutenção do projeto, tais como:  
-- Equipe de desenvolvimento de sistemas.  
-- Gerentes de projeto e diretoria de TI.  
-- Fornecedores de hardware/equipamentos.  
-- Equipe de operações responsáveis pelos locais de instalação.
+## Visão Geral
+Este documento apresenta a proposta técnica do **Totem Inteligente "Smart-Guide" FlexMedia**, uma solução para transformar a experiência do visitante em museus e exposições culturais, com foco em:
 
-## Estrutura do Documento  
-1. Introdução e contexto do problema.  
-2. Escopo da solução proposta.  
-3. Requisitos funcionais.  
-4. Requisitos não‑funcionais (desempenho, segurança, usabilidade).  
-5. Arquitetura técnica (hardware, software, integração).  
-6. Cronograma e marcos principais.  
-7. Estimativa de custos.  
-8. Plano de implantação e operação.  
-9. Manutenção, suporte e atualização.  
-10. Anexos e referências.
+- Engajamento inteligente: personalização de rotas e conteúdos em tempo real.  
+- Privacidade por design: processamento de dados anônimos localmente, em conformidade com LGPD.  
+- Geração de insights acionáveis: métricas de engajamento e heatmaps para curadoria.
 
-## Como utilizar este documento  
-- Leia a introdução para compreender o problema que o totem visa resolver.  
-- Verifique se o escopo atende às necessidades da organização.  
-- Analise os requisitos funcionais antes de considerar a arquitetura técnica.  
-- Use o cronograma e a estimativa de custos como base para orçamentos e planejamento interno.  
-- Share com equipes técnicas e de negócios para alinhamento total.  
-- Utilize o plano de manutenção como guia para operacionais e suporte.
+## Arquitetura da Solução
+A solução é modular e escalável, dividida entre **Edge Computing** (processamento local) e **Cloud** (processamento e armazenamento centralizado).  
+O fluxo de dados funciona assim:
 
-## Benefícios esperados  
-- Maior interatividade com o público‑alvo através de interface amigável.  
-- Redução do custo operacional via automação e monitoramento remoto.  
-- Facilidade de atualização de conteúdo e escalabilidade para futuras implementações.  
-- Estética profissional para presença em ponto de venda ou ambiente corporativo.
+1. Sensor de presença (PIR) ativa o microcontrolador ESP32-CAM.  
+2. O dispositivo analisa a atenção do usuário anonimamente e descarta imagens, enviando apenas metadados para a nuvem.  
+3. A Google Cloud Platform processa os dados via API Gateway, Cloud Functions e Firestore.
 
-## Contato e Suporte  
-Para dúvidas ou solicitações de alteração do documento, entre em contato com o responsável pelo projeto ou com a equipe de engenharia envolvida.
+## Tecnologias Principais
+- **Hardware / Edge**: ESP32-CAM, TensorFlow Lite Micro.  
+- **Nuvem**: API Gateway, Cloud Functions (Python), Firestore (NoSQL).  
+- **Interação / IA**: Dialogflow, Speech-to-Text e Text-to-Speech do Google.
+
+## Segurança e Privacidade
+- Anonimização de dados de imagem.  
+- Criptografia TLS/HTTPS nas comunicações.  
+- Autenticação via API Keys (totens) e Tokens JWT (dashboard).
+
+## Responsabilidades da Equipe
+- **Filipe Marques Previato**: Gerenciamento de Projeto e Documentação  
+- **Jonathan Gomes Ribeiro Franco**: IA, Segurança e Tecnologias  
+- **Victor Araujo Ferreira**: Arquitetura de Nuvem e Backend  
+- **Pedro Zanon Castro**: Hardware, Edge e Coleta de Dados
 
 ---
 
-> **Nota:** Este README funciona como “porta de entrada” para o documento técnico completo — ideal para quem quer uma visão rápida antes de se aprofundar nos detalhes.
+> Este README serve como **porta de entrada** para o documento completo, fornecendo visão geral, arquitetura, tecnologias e responsabilidades. Para detalhes completos, consulte o documento técnico principal.
 
